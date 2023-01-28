@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
 from PIL import Image
-from matplotlib import pyplot as plt
 
 
 def mandelbrot(size, zoom, iterations, color_scheme):
@@ -19,6 +19,7 @@ def mandelbrot(size, zoom, iterations, color_scheme):
         fractal = grayscale_colormap(fractal)
     return Image.fromarray(np.uint8(fractal))
 
+
 def julia(size, zoom, iterations, color_scheme, c):
     xmin, xmax, ymin, ymax = -1.5/zoom, 1.5/zoom, -1.5/zoom, 1.5/zoom
     x, y = np.linspace(xmin, xmax, size), np.linspace(ymin, ymax, size)
@@ -33,11 +34,13 @@ def julia(size, zoom, iterations, color_scheme, c):
         fractal = grayscale_colormap(fractal)
     return Image.fromarray(np.uint8(fractal))
 
+
 def rainbow_colormap(fractal):
     fractal = np.log(fractal + 1)
     fractal /= fractal.max()
     fractal = np.uint8(plt.cm.rainbow(fractal) * 255)
     return fractal
+
 
 def grayscale_colormap(fractal):
     fractal = np.log(fractal + 1)
