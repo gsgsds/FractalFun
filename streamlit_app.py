@@ -68,7 +68,7 @@ color_scheme = st.selectbox("Select a color scheme", ["Rainbow", "Grayscale"])
 
 # Get the fractal parameters
 c = st.text_input("Enter the value of c (for Julia fractals only)", value="-0.4 + 0.6j")
-c = complex(c)
+c = complex("".join(c.split()))
 
 # Generate the fractal
 if fractal_type == "Mandelbrot":
